@@ -1,12 +1,7 @@
 <template>
-  <div class="ma-5">
+  <div class="ma-7">
     <v-card width="320">
-      <v-img
-        contain
-        class="white--text"
-        height="250px"
-        src="https://pngimg.com/uploads/men_shoes/men_shoes_PNG7475.png"
-      >
+      <v-img contain class="white--text" height="250px" :src="product.image">
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox> </v-flex>
@@ -15,8 +10,12 @@
       </v-img>
       <v-card-title>
         <div class="mx-5">
-          <span class="title blue--text">{{ data.name }}</span
-          ><br />
+          <router-link :to="{ name: 'Product', params: { id: product.id } }">{{
+            product.title
+          }}</router-link>
+          <!-- <span class="title blue--text">{{ data.name }}</span
+          > -->
+          <br />
           <v-rating
             readonly
             small
@@ -25,7 +24,7 @@
             color="orange"
             v-model="data.rating"
           ></v-rating>
-          <span class="title"> ${{ data.price }}</span>
+          <span class="title"> ${{ product.price }}</span>
           <div class="body-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ut
           </div>
@@ -42,6 +41,7 @@
 export default {
   name: "ProductCard",
   components: {},
+  props: ["product"],
 
   data() {
     return {
