@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-2">
+  <div class="ma-5">
     <v-card width="320">
       <v-img
         contain

@@ -5,8 +5,6 @@
       <ProductCard />
       <ProductCard />
       <ProductCard />
-      <ProductCard />
-      <ProductCard />
     </div>
   </v-container>
 </template>
