@@ -52,12 +52,12 @@ export default {
       items: [
         {
           quantity: "1x",
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://pngimg.com/uploads/men_shoes/men_shoes_PNG7475.png",
           price: "$35",
         },
         {
           quantity: "2x",
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          avatar: "https://pngimg.com/uploads/men_shoes/men_shoes_PNG7475.png",
           price: "$35",
         },
       ],

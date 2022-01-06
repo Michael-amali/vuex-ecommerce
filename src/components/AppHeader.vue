@@ -5,7 +5,7 @@
 
       <v-toolbar-title>LA</v-toolbar-title>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text>Home</v-btn>
+        <v-btn text @click="goToHome">Home</v-btn>
         <v-btn text>Products</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
@@ -59,6 +59,11 @@ export default {
       drawer: false,
       group: null,
     };
+  },
+  methods: {
+    goToHome() {
+      this.$router.push("/");
+    },
   },
 };
 </script>
