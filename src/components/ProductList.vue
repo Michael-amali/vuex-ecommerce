@@ -1,12 +1,11 @@
 <template>
   <v-container>
-    <div class="d-flex justify-center align-items-stretch flex-wrap">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+    <div class="d-flex align-items-stretch flex-wrap">
+      <ProductCard
+        v-for="product in getProducts"
+        :key="product.id"
+        :product="product"
+      />
     </div>
   </v-container>
 </template>
@@ -21,6 +20,15 @@ export default {
     return {
       data: {},
     };
+  },
+  computed: {
+    getProducts() {
+      return this.$store.state.products;
+    },
+  },
+
+  mounted() {
+    this.$store.dispatch("getProducts");
   },
 };
 </script>
