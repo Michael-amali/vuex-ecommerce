@@ -18,14 +18,19 @@
             <v-col cols="3">
               <v-text-field
                 outlined
-                v-model="product.price"
+                v-model.number="quantity"
                 type="number"
-                label="Price"
+                label="Quantity"
                 required
               ></v-text-field
             ></v-col>
             <v-col
-              ><v-btn large rounded depressed class="mx-auto" @click="addToCart()"
+              ><v-btn
+                large
+                rounded
+                depressed
+                class="mx-auto"
+                @click="addToCart()"
                 >ADD TO CART</v-btn
               ></v-col
             >
@@ -58,12 +63,8 @@ export default {
           avatar: "https://pngimg.com/uploads/men_shoes/men_shoes_PNG7475.png",
           price: "35.00",
         },
-        {
-          quantity: "2x",
-          avatar: "https://pngimg.com/uploads/men_shoes/men_shoes_PNG7475.png",
-          price: "35.00",
-        },
       ],
+      quantity: 1,
     };
   },
   computed: {
@@ -71,9 +72,12 @@ export default {
       return this.$store.state.product;
     },
   },
-  methods:{
+  methods: {
     addToCart() {
-      this.$store.dispatch("addToCart", { product: this.product, quantity: 1 });
+      this.$store.dispatch("addToCart", {
+        product: this.product,
+        quantity: this.quantity,
+      });
     },
   },
 

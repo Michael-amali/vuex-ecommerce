@@ -24,12 +24,12 @@ export const SET_CART = (state, cartItems) => {
 
 export const REMOVE_PRODUCT_FROM_CART = (state, cartItem) => {
   let productIndex = state.cart.findIndex((item) => {
-    return item.product_id === cartItem.product_id;
+    return item.id === cartItem.id;
   });
 
   state.cart.splice(productIndex, 1);
 };
 
-export const CLEAR_CART_ITEMS = (state) =>{
+export const CLEAR_CART_ITEMS = (state) => {
   state.cart = [];
 };

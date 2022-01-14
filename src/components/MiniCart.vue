@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "App",
   components: {},
@@ -80,23 +81,47 @@ export default {
     };
   },
   computed: {
-    cart() {
-      return this.$store.state.cart;
-    },
-    cartItemCount() {
-      return this.$store.getters.cartItemCount;
-    },
+    // ******* Not using mapState ********
+    // cart() {
+    //   return this.$store.state.cart;
+    // },
+
+    // ******* Using mapState ***********
+    ...mapState(["cart"]),
+
+    // ******* Not using mapGetters ********
+    // cartItemCount() {
+    //   return this.$store.getters.cartItemCount;
+    // },
+
+    // ******* Using mapGetters ***********
+    ...mapGetters(["cartItemCount"]),
+
     cartTotalPrice() {
       return this.$store.getters.cartTotalPrice;
     },
+
     product() {
       return this.$store.state.products;
     },
   },
+  // ******** One way of setting getters *********
+  // computed: mapGetters({
+  //   cartItemCount: "cartItemCount",
+  // }),
+
+  // ******* Another way of setting getters ********
+  // computed: mapGetters(["cartItemCount"]),
+
   methods: {
-    removeProductFromCart(cartItem) {
-      this.$store.dispatch("removeProductFromCart", cartItem);
-    },
+    // ******* Not using mapAction ********
+    // removeProductFromCart(cartItem) {
+    //   this.$store.dispatch("removeProductFromCart", cartItem);
+    // },
+
+    // ******* Not using mapAction ********
+    ...mapActions(["removeProductFromCart"]),
+
     clearCartItems(cart) {
       this.$store.dispatch("clearCartItems", cart);
     },
@@ -104,6 +129,7 @@ export default {
 
   mounted() {
     this.$store.dispatch("getCartItems");
+    // the code above can be written without using dispatch() function  --->By calling this.getCartItems(); in the mounted() function and adding getCartItems in the mapActions array
   },
 };
 </script>
