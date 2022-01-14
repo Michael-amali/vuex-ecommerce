@@ -31,7 +31,9 @@
         </div>
       </v-card-title>
       <v-card-actions>
-        <v-btn large rounded depressed class="mx-auto">ADD TO CART</v-btn>
+        <v-btn large rounded depressed class="mx-auto" @click="addToCart()"
+          >ADD TO CART</v-btn
+        >
       </v-card-actions>
     </v-card>
   </div>
@@ -62,6 +64,9 @@ export default {
   methods: {
     colchange() {
       this.color = this.color === "blue" ? "grey lighten-2" : "blue";
+    },
+    addToCart() {
+      this.$store.dispatch("addToCart", { product: this.product, quantity: 1 });
     },
   },
 };
