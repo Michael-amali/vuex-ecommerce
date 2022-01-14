@@ -1,31 +1,31 @@
 <template>
   <div>
     <AppHeader />
-    <v-container>
+    <v-container v-if="product">
       <v-row>
         <v-col cols="12" sm="4">
-          <v-img :src="items[0].avatar"></v-img>
+          <v-img :src="product.image"></v-img>
         </v-col>
         <v-col cols="12" sm="8">
           <v-col>
-            <h1>Product Name</h1>
+            <h1>{{ product.title }}</h1>
           </v-col>
           <v-col>
-            <h3>${{ items[0].price }}</h3>
+            <h3>${{ product.price }}</h3>
           </v-col>
 
           <v-row>
             <v-col cols="3">
               <v-text-field
                 outlined
-                v-model="items[0].price"
+                v-model="product.price"
                 type="number"
                 label="Price"
                 required
               ></v-text-field
             ></v-col>
             <v-col
-              ><v-btn large rounded depressed class="mx-auto"
+              ><v-btn large rounded depressed class="mx-auto" @click="addToCart()"
                 >ADD TO CART</v-btn
               ></v-col
             >
@@ -65,6 +65,20 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    product() {
+      return this.$store.state.product;
+    },
+  },
+  methods:{
+    addToCart() {
+      this.$store.dispatch("addToCart", { product: this.product, quantity: 1 });
+    },
+  },
+
+  mounted() {
+    this.$store.dispatch("getProduct", this.id);
   },
 };
 </script>
